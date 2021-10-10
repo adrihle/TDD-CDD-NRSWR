@@ -1,4 +1,4 @@
-# MASMOVIL - DOCTOR GO
+# NEXT-ARCHITECTURE-MULTI
 
 Bootstrap a developer-friendly NextJS app configured with:
 
