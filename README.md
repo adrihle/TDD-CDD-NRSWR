@@ -20,7 +20,7 @@ npm run type-check ---> comprobacion de typescript
 
 # DIAGRAMAS EXPLICATIVOS ARQUITECTURA
 
-- En la carpeta _DOC se podran encontrar diagramas explicativos sobre los flujos definidos en la arquitectura
+- En la carpeta \_DOC se podran encontrar diagramas explicativos sobre los flujos definidos en la arquitectura
 
 # DIRECTIVAS DEL PROYECTO
 
@@ -47,10 +47,9 @@ La arquitectura de carpetas sigue un modelo streamer de transferencia de datos y
 - Para funciones generales y de amplio uso (helpers)
 
 - Para variables que dependan del entorno de ejecucion (environment): se distinguen las variables
-de los distintos entornos dependiendo de su extension
+  de los distintos entornos dependiendo de su extension
 
 - Para datos que se comportan entre diferentes paginas/vistas (contexts): esto añade una capa adicional de datos para compartir entre paginas
-
 
 - services --> pipes --> page --> containers --> components --> render
 
@@ -68,7 +67,6 @@ mock ---> button.mock.ts
 pipe ---> button.pipe.ts
 
 service ---> button.service.ts
-
 
 Todos exepto las paginas, porque su estructura de nombres se usa para el routing.
 
@@ -98,11 +96,11 @@ En este mismo boilerplate, tenemos ejemplos de:
 
 # ESTILOS GLOBALES CSS RULES
 
-- ._xxx => clases globales y tipografias
+- .\_xxx => clases globales y tipografias
 
-- .__xxx => clases de grid y contenedores
+- .\_\_xxx => clases de grid y contenedores
 
-- .___xxx => animaciones
+- .\_\_\_xxx => animaciones
 
 # NOMENCLATURA COMPONENTES Y DEPENDENCIAS DEL MISMO
 
