@@ -22,7 +22,8 @@
       "@context": [
         "context"
       ]
-    }
+    },
+    "incremental": true
   },
   "exclude": [
     "node_modules",

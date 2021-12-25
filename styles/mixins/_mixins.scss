@@ -1,7 +1,0 @@
-@import "../grid/grid-vars";
-
-@mixin desktop-font($size) {
-  @media screen and (min-width: $small) {
-    font-size: $size;
-  }
-}
