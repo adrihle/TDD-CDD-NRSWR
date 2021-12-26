@@ -1,49 +1,41 @@
-import { NextPage, NextPageContext, GetStaticProps } from 'next'
-import Link from 'next/link'
-import { iSeoPage } from 'interfaces'
-import axios from 'axios'
+import { NextPage, GetStaticProps } from 'next';
+import { iPokemonPreview } from 'interfaces';
+import axios from 'axios';
 
-interface iHomePage extends iSeoPage {
-  pokemons: string[]
+interface iHomePage {
+  pokemons: iPokemonPreview[];
 }
 
-const Home: NextPage<iHomePage> = ({ title, pokemons }) => {
-  console.log(title)
+const Home: NextPage<iHomePage> = ({ pokemons }) => {
+  console.log(pokemons);
   return (
     <main>
       <h3>Pokemon List</h3>
       <ul>
-        {pokemons?.map((pokemon) => (
+        {/* {pokemons?.map((pokemon) => (
           <li style={{ cursor: 'pointer' }} key={pokemon}>
             <Link href={pokemon}>
               <a key={pokemon}>{pokemon.toUpperCase()}</a>
             </Link>
           </li>
-        ))}
+        ))} */}
       </ul>
     </main>
-  )
-}
+  );
+};
 
-export const getStaticProps: GetStaticProps<iHomePage> = async ({
-  req,
-}: NextPageContext) => {
-  console.log(req)
-  type pokemonType = { name: string; url: string }
-  const pokemons = await axios
-    .get('https://pokeapi.co/api/v2/pokemon?offset=10&limit=1118')
-    .then((res) => res.data)
-    .then((res) =>
-      (res.results as pokemonType[]).map((pokemon) => pokemon.name)
-    )
+export const getStaticProps: GetStaticProps<iHomePage> = async () => {
+  const resp = await axios
+    .post<iPokemonPreview[]>(`${process.env.SERVER_BASE_URL}/pokemon`, {
+      limit: 20,
+      page: 0,
+    })
+    .then((res) => res.data);
   return {
     props: {
-      title: 'asd',
-      description: 'asd',
-      url: '',
-      pokemons,
+      pokemons: resp,
     },
-  }
-}
+  };
+};
 
-export default Home
+export default Home;
