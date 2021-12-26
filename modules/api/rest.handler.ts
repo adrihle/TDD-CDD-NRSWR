@@ -1,47 +1,47 @@
-import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next'
-import { HttpStatus } from 'interfaces'
+import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
+import { HttpStatus } from 'interfaces';
 
 type Cookie = {
-  name: string
-  value: string
+  name: string;
+  value: string;
   options: {
-    ttl: number
-  }
-}
+    ttl: number;
+  };
+};
 
 export type MyResponse<T> = {
-  body?: T
-  cookies?: Cookie[]
+  body?: T;
+  cookies?: Cookie[];
   error?: {
-    key: string
-  }
-  headers?: { [key: string]: string | number }
-  location?: string
-  status?: HttpStatus
-}
+    key: string;
+  };
+  headers?: { [key: string]: string | number };
+  location?: string;
+  status?: HttpStatus;
+};
 
 //! Add here whatever you need to add to your requests
 export interface MyRequest<T = any> extends NextApiRequest {
-  body: T
+  body: T;
 }
 
 export type RouteHandler<OutType = any, InType = any> = (
   req: MyRequest<InType>
-) => Promise<MyResponse<OutType>>
+) => Promise<MyResponse<OutType>>;
 
 export type Middleware = (
   req: MyRequest,
   res?: NextApiResponse
-) => Promise<void>
+) => Promise<void>;
 
 export const createEndpoints = (endpoints: {
-  [key: string]: RouteHandler<any, any>
+  [key: string]: RouteHandler<any, any>;
 }): NextApiHandler => {
   return async (req: NextApiRequest, res: NextApiResponse) => {
-    const { method = '' } = req
-    const handler = endpoints[method.toLowerCase()]
+    const { method = '' } = req;
+    const handler = endpoints[method.toLowerCase()];
     if (!handler) {
-      return onError(new RouteError(HttpStatus.NOT_FOUND), req, res)
+      return onError(new RouteError(HttpStatus.NOT_FOUND), req, res);
     }
 
     try {
@@ -51,39 +51,39 @@ export const createEndpoints = (endpoints: {
         headers,
         location,
         cookies,
-      } = await handler(req as MyRequest)
-      const command = res.status(status)
-      if (cookies) applyCookies(command, cookies)
-      if (headers) applyHeaders(command, headers)
+      } = await handler(req as MyRequest);
+      const command = res.status(status);
+      if (cookies) applyCookies(command, cookies);
+      if (headers) applyHeaders(command, headers);
       if (location) {
-        applyRedirect(command, location)
-        command.end()
+        applyRedirect(command, location);
+        command.end();
       } else {
-        command.send(body || {})
-        command.end()
+        command.send(body || {});
+        command.end();
       }
     } catch (err: any) {
-      let error = err
+      let error = err;
       if (error.status && error.error && !(error instanceof RouteError)) {
-        error = new RouteError(error.status)
+        error = new RouteError(error.status);
       }
-      return onError(error, req, res)
+      return onError(error, req, res);
     }
-  }
-}
+  };
+};
 
 const applyRedirect = (res: NextApiResponse, location: string) => {
-  res.status(HttpStatus.TEMPORARY_REDIRECT)
-  res.setHeader('Location', location)
-}
+  res.status(HttpStatus.TEMPORARY_REDIRECT);
+  res.setHeader('Location', location);
+};
 
 const applyCookies = (res: NextApiResponse, cookies: Cookie[]) => {
   cookies.forEach(({ name, value, options = {} }) => {
-    let valueStr = `${name}=${value};Path=/;`
-    if (options.ttl) valueStr += `Max-Age=${options.ttl};`
-    res.setHeader('Set-Cookie', valueStr)
-  })
-}
+    let valueStr = `${name}=${value};Path=/;`;
+    if (options.ttl) valueStr += `Max-Age=${options.ttl};`;
+    res.setHeader('Set-Cookie', valueStr);
+  });
+};
 
 const applyHeaders = (
   res: NextApiResponse,
@@ -91,8 +91,8 @@ const applyHeaders = (
 ) => {
   Object.entries(headers).forEach(([key, value]) =>
     res.setHeader(key, String(value))
-  )
-}
+  );
+};
 
 export class RouteError {
   constructor(
@@ -102,7 +102,7 @@ export class RouteError {
   ) {}
 
   toString(): string {
-    return `[${this.status}]: ${this.message}`
+    return `[${this.status}]: ${this.message}`;
   }
 }
 
@@ -112,21 +112,21 @@ function onError(
   res: NextApiResponse
 ) {
   if (error.errmsg?.includes('E11000')) {
-    error = new RouteError(HttpStatus.WRONG_REQUEST, undefined, error)
+    error = new RouteError(HttpStatus.WRONG_REQUEST, undefined, error);
   }
 
   if (error instanceof RouteError) {
     const body = {
       message: error.message,
-    }
-    res.setHeader('silent', String(req.headers.silent))
-    res.status(error.status).send(body)
+    };
+    res.setHeader('silent', String(req.headers.silent));
+    res.status(error.status).send(body);
   } else {
     const body = {
       error: 'ERROR_SERVER',
       message: 'Internal Server Error',
-    }
-    res.setHeader('silent', String(req.headers.silent))
-    res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(body)
+    };
+    res.setHeader('silent', String(req.headers.silent));
+    res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(body);
   }
 }

@@ -1,12 +1,12 @@
 export class HttpError {
-  error: Error
+  error: Error;
 
   constructor(public code: number, public message?: string) {
-    this.error = new Error(message)
+    this.error = new Error(message);
   }
 
   toString(): string {
-    return `[HTTP Error] ${this.code} ${this.message}`
+    return `[HTTP Error] ${this.code} ${this.message}`;
   }
 }
 

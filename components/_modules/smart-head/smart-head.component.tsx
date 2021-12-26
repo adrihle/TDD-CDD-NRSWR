@@ -1,8 +1,8 @@
-import Head from 'next/head'
+import Head from 'next/head';
 
 interface iSmartHead {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
 export const SmartHead: React.FC<iSmartHead> = ({ title, description }) => (
@@ -10,4 +10,4 @@ export const SmartHead: React.FC<iSmartHead> = ({ title, description }) => (
     <title>{title}</title>
     <meta name="description" content={description} />
   </Head>
-)
+);

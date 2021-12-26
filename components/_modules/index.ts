@@ -1,1 +1,1 @@
-export * from './smart-head/smart-head.component'
+export * from './smart-head/smart-head.component';

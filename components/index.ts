@@ -1,1 +1,1 @@
-export * from './_modules'
+export * from './_modules';

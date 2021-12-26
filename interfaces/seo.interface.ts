@@ -1,5 +1,5 @@
 export interface iSeoPage {
-  title: string
-  description: string
-  url: string
+  title: string;
+  description: string;
+  url: string;
 }
