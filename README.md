@@ -18,6 +18,8 @@ npm run lint ---> revisado de codigo
 
 npm run type-check ---> comprobacion de typescript
 
+npm run component [component-name] [handler-name (optional)] ---> cli para crear arquitectura componente
+
 # DIAGRAMAS EXPLICATIVOS ARQUITECTURA
 
 - En la carpeta \_DOC se podran encontrar diagramas explicativos sobre los flujos definidos en la arquitectura
