@@ -22,7 +22,7 @@ createFolder(name).then(async () => {
   // CREATE COMPONENT
   fs.writeFile(
     `${name}/${name}.component.tsx`,
-    `import { styles } from './_modules';
+`import styles from './${name}.module.scss';
 
 export const ${niceName}Component: React.FC = () => 
     <div className={styles.wrapper}>${name} work fine</div>
@@ -55,42 +55,40 @@ describe('${name} component', () => {
     }
   );
 
-  //CREATE _MODULES
-  createFolder(`${name}/_modules`).then(async () => {
-    // CREATE STYLES
-    fs.writeFile(
-      `${name}/_modules/${name}.module.scss`,
-      `.wrapper{
-    font-size: 20px;
+  // CREATE STYLES
+  fs.writeFile(
+    `${name}/${name}.module.scss`,
+`.wrapper{
+  font-size: 20px;
 }
-        `,
+      `,
+    (error) => {
+      if (error) console.log(error);
+      else console.log(`🔴 Styles created successfully`);
+    }
+  );
+
+  if (handler){
+    //CREATE _MODULES
+  createFolder(`${name}/_modules`).then(async () => {
+
+    //CREATE HANDLER
+    fs.writeFile(
+`${name}/_modules/${handler}.handler.ts`,
+`export const ${handler}Handler = (): void => console.log('handler working');
+      `,
       (error) => {
         if (error) console.log(error);
-        else console.log(`🔴 Styles created successfully`);
+        else console.log(`🟠 Handler created successfully`);
       }
     );
-
-    if (handler) {
-      fs.writeFile(
-        `${name}/_modules/${handler}.handler.ts`,
-        `export const ${handler}Handler = (): void => console.log('handler working');
-        `,
-        (error) => {
-          if (error) console.log(error);
-          else console.log(`🟠 Handler created successfully`);
-        }
-      );
-    }
 
     // CREATE MODULES INDEX
     fs.writeFile(
       `${name}/_modules/index.ts`,
-      `import styles from './${name}.module.scss';
-export { styles };
-${
+`${
   handler &&
   `export * from './${handler}.handler';
-
 `
 }
     `,
@@ -100,6 +98,7 @@ ${
       }
     );
   });
+  }
 
   // CREATE INDEX
   fs.writeFile(
