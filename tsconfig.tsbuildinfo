@@ -676,26 +676,6 @@
         "signature": "e86c67381558c41033ddde07ef2f9a61831807d6badf950b8be69e2d8a956fd6",
         "affectsGlobalScope": false
       },
-      "./gresca/_modules/getdate.handler.ts": {
-        "version": "7f10c9562aff545b15e6eeb97f1022e1410343adcb499b1c42a821e596350815",
-        "signature": "69888f89f9ac07bdddc6df60f8f021c3054b171593c9455d057742ee4d4dffa5",
-        "affectsGlobalScope": false
-      },
-      "./gresca/_modules/index.ts": {
-        "version": "fdc8f99f4efda04ff7475c12e9ca582339fad641ddee4a2fdc5542cfebf57d8d",
-        "signature": "fdc8f99f4efda04ff7475c12e9ca582339fad641ddee4a2fdc5542cfebf57d8d",
-        "affectsGlobalScope": false
-      },
-      "./gresca/gresca.component.tsx": {
-        "version": "14cb505d6c59964be0e30bee4a5c3af35fcb149681459df8e89d39b4b1200422",
-        "signature": "7497696dbc9709d0819d1cb094fe9ff4df59db6efd5266b73d846f9a9111e4b3",
-        "affectsGlobalScope": false
-      },
-      "./gresca/index.ts": {
-        "version": "ccca4e9595fd73706a7f78df6f9f87be78e420aed1826021713e8466b78fc13c",
-        "signature": "ccca4e9595fd73706a7f78df6f9f87be78e420aed1826021713e8466b78fc13c",
-        "affectsGlobalScope": false
-      },
       "./interfaces/http.interface.ts": {
         "version": "4c72dadbe0000c766b85354087c444d9fb8edb5daac4db7a375ac0ecce459176",
         "signature": "77f70ce134ca385b06ec9b135e9b1799385bd19f0c8aeaf18f182eefcb586984",
@@ -841,11 +821,6 @@
         "signature": "efd78ee4a9f169ccec76accc6bc18e8adb6d7f32f20e8133a5b5288bc49f5fe9",
         "affectsGlobalScope": false
       },
-      "./gresca/gresca.test.tsx": {
-        "version": "f207073e66c3b98c3dff830684e135f1342ea1d15221e334a59536bf3bb3512d",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
-        "affectsGlobalScope": false
-      },
       "./node_modules/next/dist/client/link.d.ts": {
         "version": "74587d651c85f1cc2690e5ddca3458c34d7674bea2e0ef43e2c0cd5cc354cabe",
         "signature": "74587d651c85f1cc2690e5ddca3458c34d7674bea2e0ef43e2c0cd5cc354cabe",
@@ -907,7 +882,7 @@
         "affectsGlobalScope": false
       },
       "./cli/component.js": {
-        "version": "d165d1df03ca8619a3f978b8ac5ead314fb4ff7657b7f216cc421cd1c879352d",
+        "version": "6be5911d8c12822e4e89196241e67fd04d1351202e73ff44039063f54fdff722",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": true
       },
@@ -1102,20 +1077,6 @@
       ],
       "./containers/pagination-list/pagination-list.test.tsx": [
         "./node_modules/@testing-library/react/types/index.d.ts"
-      ],
-      "./gresca/_modules/index.ts": [
-        "./declaration.d.ts",
-        "./gresca/_modules/getdate.handler.ts"
-      ],
-      "./gresca/gresca.component.tsx": [
-        "./gresca/_modules/index.ts"
-      ],
-      "./gresca/gresca.test.tsx": [
-        "./gresca/gresca.component.tsx",
-        "./node_modules/@testing-library/react/types/index.d.ts"
-      ],
-      "./gresca/index.ts": [
-        "./gresca/gresca.component.tsx"
       ],
       "./interfaces/index.ts": [
         "./interfaces/http.interface.ts",
@@ -1656,13 +1617,6 @@
       "./containers/index.ts": [
         "./containers/pagination-list/pagination-list.container.tsx"
       ],
-      "./gresca/_modules/index.ts": [
-        "./declaration.d.ts",
-        "./gresca/_modules/getdate.handler.ts"
-      ],
-      "./gresca/index.ts": [
-        "./gresca/gresca.component.tsx"
-      ],
       "./interfaces/index.ts": [
         "./interfaces/http.interface.ts",
         "./interfaces/pokemon.interface.ts",
@@ -2192,11 +2146,6 @@
       "./containers/pagination-list/pagination-list.container.tsx",
       "./containers/pagination-list/pagination-list.test.tsx",
       "./declaration.d.ts",
-      "./gresca/_modules/getdate.handler.ts",
-      "./gresca/_modules/index.ts",
-      "./gresca/gresca.component.tsx",
-      "./gresca/gresca.test.tsx",
-      "./gresca/index.ts",
       "./interfaces/http.interface.ts",
       "./interfaces/index.ts",
       "./interfaces/pokemon.interface.ts",

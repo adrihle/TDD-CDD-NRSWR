@@ -1,12 +1,13 @@
 /**
  * @jest-environment jsdom
  */
-
 import { screen, render } from '@testing-library/react';
+import { PaginationListContainer } from './pagination-list.container';
 
-describe('Pagination List', () => {
+beforeEach(() => render(<PaginationListContainer />));
+
+describe('Pagination List Container', () => {
   it('must display a title', () => {
-    render(<div>Pagination List</div>);
     expect(screen.queryByText(/Pagination List/i)).toBeInTheDocument();
   });
 });

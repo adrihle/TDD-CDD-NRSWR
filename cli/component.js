@@ -11,7 +11,7 @@ console.log(`🦉 Creating ${niceName} Component ...`);
 
 const createFolder = async (folderName) => {
   return new Promise((resolve, reject) => {
-    fs.mkdir(folderName, (err) => {
+    fs.mkdir(`${process.env.INIT_CWD}/${folderName}`, (err) => {
       if (err) reject(err);
       else resolve();
     });
@@ -21,7 +21,7 @@ const createFolder = async (folderName) => {
 createFolder(name).then(async () => {
   // CREATE COMPONENT
   fs.writeFile(
-    `${name}/${name}.component.tsx`,
+    `${process.env.INIT_CWD}/${name}/${name}.component.tsx`,
 `import styles from './${name}.module.scss';
 
 export const ${niceName}Component: React.FC = () => 
@@ -35,7 +35,7 @@ export const ${niceName}Component: React.FC = () =>
 
   // CREATE TEST
   fs.writeFile(
-    `${name}/${name}.test.tsx`,
+    `${process.env.INIT_CWD}/${name}/${name}.test.tsx`,
     `/**
 * @jest-environment jsdom
 */
@@ -57,7 +57,7 @@ describe('${name} component', () => {
 
   // CREATE STYLES
   fs.writeFile(
-    `${name}/${name}.module.scss`,
+    `${process.env.INIT_CWD}/${name}/${name}.module.scss`,
 `.wrapper{
   font-size: 20px;
 }
@@ -70,11 +70,11 @@ describe('${name} component', () => {
 
   if (handler){
     //CREATE _MODULES
-  createFolder(`${name}/_modules`).then(async () => {
+  createFolder(`${process.env.INIT_CWD}/${name}/_modules`).then(async () => {
 
     //CREATE HANDLER
     fs.writeFile(
-`${name}/_modules/${handler}.handler.ts`,
+`${process.env.INIT_CWD}/${name}/_modules/${handler}.handler.ts`,
 `export const ${handler}Handler = (): void => console.log('handler working');
       `,
       (error) => {
@@ -85,7 +85,7 @@ describe('${name} component', () => {
 
     // CREATE MODULES INDEX
     fs.writeFile(
-      `${name}/_modules/index.ts`,
+      `${process.env.INIT_CWD}/${name}/_modules/index.ts`,
 `${
   handler &&
   `export * from './${handler}.handler';
@@ -102,7 +102,7 @@ describe('${name} component', () => {
 
   // CREATE INDEX
   fs.writeFile(
-    `${name}/index.ts`,
+    `${process.env.INIT_CWD}/${name}/index.ts`,
     `export { ${niceName}Component } from './${name}.component';
 `,
     (error) => {
@@ -114,7 +114,7 @@ describe('${name} component', () => {
   if (handler === 'H') {
     // CREATE INDEX
     fs.writeFile(
-      `${name}/${name}.handler.ts`,
+      `${process.env.INIT_CWD}/${name}/${name}.handler.ts`,
       `export { ${niceName}Component } from './${name}.component';
 `,
       (error) => {
