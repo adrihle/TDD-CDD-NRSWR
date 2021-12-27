@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps<iPokemon> = async ({
 export const getStaticPaths: GetStaticPaths = async () => {
   type pokemonType = { name: string; url: string };
   const paths = await axios
-    .get('https://pokeapi.co/api/v2/pokemon?offset=10&limit=1118')
+    .get('https://pokeapi.co/api/v2/pokemon?offset=0&limit=1118')
     .then((res) => res.data)
     .then((res) =>
       (res.results as pokemonType[]).map((pokemon) => ({

@@ -14,6 +14,7 @@ const get: RouteHandler<
   const response = await axios
     .get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     .then((res) => res.data);
+
   return {
     status: HttpStatus.OK,
     body: {

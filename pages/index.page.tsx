@@ -1,5 +1,6 @@
 import { NextPage, GetStaticProps } from 'next';
 import { iPokemonPreview } from 'interfaces';
+import { PaginationListContainer } from 'containers';
 import axios from 'axios';
 
 interface iHomePage {
@@ -7,19 +8,11 @@ interface iHomePage {
 }
 
 const Home: NextPage<iHomePage> = ({ pokemons }) => {
-  console.log(pokemons);
+  console.log('rendered the whole page ....');
   return (
     <main>
       <h3>Pokemon List</h3>
-      <ul>
-        {/* {pokemons?.map((pokemon) => (
-          <li style={{ cursor: 'pointer' }} key={pokemon}>
-            <Link href={pokemon}>
-              <a key={pokemon}>{pokemon.toUpperCase()}</a>
-            </Link>
-          </li>
-        ))} */}
-      </ul>
+      <PaginationListContainer pokemons={pokemons} />
     </main>
   );
 };

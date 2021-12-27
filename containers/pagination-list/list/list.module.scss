@@ -1,0 +1,36 @@
+.wrapper{
+}
+
+.unitWrapper{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid #d3d3d3;
+  padding: 5px 10px;
+  div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    img {
+      width: 30px;
+      border-radius: 50%;
+      background-color: lightblue;
+      padding: 5px;
+    }
+  }
+  svg{
+    cursor: pointer;
+    width: 20px;
+    color: lightgray;
+  }
+  &:hover{
+    transform: scale(1.15);
+    padding: 20px 100px;
+    img {
+      width: 50px;
+    }
+  }
+}
+      

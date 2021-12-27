@@ -22,7 +22,7 @@ createFolder(name).then(async () => {
   // CREATE COMPONENT
   fs.writeFile(
     `${process.env.INIT_CWD}/${name}/${name}.component.tsx`,
-`import styles from './${name}.module.scss';
+    `import styles from './${name}.module.scss';
 
 export const ${niceName}Component: React.FC = () => 
     <div className={styles.wrapper}>${name} work fine</div>
@@ -58,7 +58,7 @@ describe('${name} component', () => {
   // CREATE STYLES
   fs.writeFile(
     `${process.env.INIT_CWD}/${name}/${name}.module.scss`,
-`.wrapper{
+    `.wrapper{
   font-size: 20px;
 }
       `,
@@ -68,36 +68,35 @@ describe('${name} component', () => {
     }
   );
 
-  if (handler){
+  if (handler) {
     //CREATE _MODULES
-  createFolder(`${process.env.INIT_CWD}/${name}/_modules`).then(async () => {
-
-    //CREATE HANDLER
-    fs.writeFile(
-`${process.env.INIT_CWD}/${name}/_modules/${handler}.handler.ts`,
-`export const ${handler}Handler = (): void => console.log('handler working');
+    createFolder(`${process.env.INIT_CWD}/${name}/_modules`).then(async () => {
+      //CREATE HANDLER
+      fs.writeFile(
+        `${process.env.INIT_CWD}/${name}/_modules/${handler}.handler.ts`,
+        `export const ${handler}Handler = (): void => console.log('handler working');
       `,
-      (error) => {
-        if (error) console.log(error);
-        else console.log(`🟠 Handler created successfully`);
-      }
-    );
+        (error) => {
+          if (error) console.log(error);
+          else console.log(`🟠 Handler created successfully`);
+        }
+      );
 
-    // CREATE MODULES INDEX
-    fs.writeFile(
-      `${process.env.INIT_CWD}/${name}/_modules/index.ts`,
-`${
-  handler &&
-  `export * from './${handler}.handler';
+      // CREATE MODULES INDEX
+      fs.writeFile(
+        `${process.env.INIT_CWD}/${name}/_modules/index.ts`,
+        `${
+          handler &&
+          `export * from './${handler}.handler';
 `
-}
+        }
     `,
-      (error) => {
-        if (error) console.log(error);
-        else console.log(`🤌  Indexed modules successfully`);
-      }
-    );
-  });
+        (error) => {
+          if (error) console.log(error);
+          else console.log(`🤌  Indexed modules successfully`);
+        }
+      );
+    });
   }
 
   // CREATE INDEX

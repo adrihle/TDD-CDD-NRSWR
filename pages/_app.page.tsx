@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app';
 import { SmartHead } from 'components';
+import '../styles/reset.scss';
 
 const seoTexts = {
   title: 'Pokemon page!',

@@ -4,7 +4,7 @@ import { createEndpoints, RouteHandler } from 'modules';
 
 interface iPokemonPost {
   req: {
-    limit: number;
+    limit?: number;
     page: number;
   };
   res: iPokemonPreview[];
@@ -26,7 +26,9 @@ const buildPokemonResponse = (
 const post: RouteHandler<iPokemonPost['res'], iPokemonPost['req']> = async ({
   body,
 }) => {
-  const { page, limit } = body;
+  console.log('que pasa');
+  const { page, limit = 20 } = body;
+  console.log(page, limit);
   const resp = await axios
     .get(`${process.env.POKEMON_BASE_URL}/pokemon`, {
       params: {
