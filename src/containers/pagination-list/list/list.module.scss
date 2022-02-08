@@ -1,7 +1,7 @@
-.wrapper{
+.wrapper {
 }
 
-.unitWrapper{
+.unitWrapper {
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -20,12 +20,12 @@
       padding: 5px;
     }
   }
-  svg{
+  svg {
     cursor: pointer;
     width: 20px;
     color: lightgray;
   }
-  &:hover{
+  &:hover {
     transform: scale(1.15);
     padding: 20px 100px;
     img {
@@ -33,4 +33,3 @@
     }
   }
 }
-      

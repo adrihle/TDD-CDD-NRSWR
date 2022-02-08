@@ -26,9 +26,7 @@ const buildPokemonResponse = (
 const post: RouteHandler<iPokemonPost['res'], iPokemonPost['req']> = async ({
   body,
 }) => {
-  console.log('que pasa');
   const { page, limit = 20 } = body;
-  console.log(page, limit);
   const resp = await axios
     .get(`${process.env.POKEMON_BASE_URL}/pokemon`, {
       params: {

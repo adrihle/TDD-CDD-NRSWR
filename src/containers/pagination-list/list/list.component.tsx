@@ -12,7 +12,6 @@ interface iListComponent {
 
 export const ListComponent: React.FC<iListComponent> = React.memo(
   ({ pokemons }) => {
-    console.log('list rendered');
     return (
       <div className={styles.wrapper}>
         {pokemons?.map((pokemon) => (

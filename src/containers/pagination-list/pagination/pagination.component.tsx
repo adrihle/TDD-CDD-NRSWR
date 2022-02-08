@@ -4,17 +4,15 @@ import {
   faAngleDoubleRight,
   faAngleDoubleLeft,
 } from '@fortawesome/free-solid-svg-icons';
-import React from 'react';
+import React, { useState } from 'react';
 
 interface iProps {
-  page: number;
   handlePagination?: (p?: any) => void;
 }
 
-let page = 0;
 export const PaginationComponent: React.FC<iProps> = React.memo(
   ({ handlePagination }) => {
-    console.log('render pagination');
+    const [page, setPage] = useState<number>(0);
     return (
       <div className={styles.wrapper}>
         <FontAwesomeIcon
@@ -22,8 +20,8 @@ export const PaginationComponent: React.FC<iProps> = React.memo(
           className={!page ? styles.prevPageButton : ''}
           onClick={() => {
             if (page > 0) {
-              page--;
-              handlePagination(page);
+              setPage(page - 1);
+              handlePagination(page - 1);
             }
           }}
         />
@@ -31,8 +29,8 @@ export const PaginationComponent: React.FC<iProps> = React.memo(
         <FontAwesomeIcon
           icon={faAngleDoubleRight}
           onClick={() => {
-            page++;
-            handlePagination(page);
+            setPage(page + 1);
+            handlePagination(page + 1);
           }}
         />
       </div>

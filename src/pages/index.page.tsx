@@ -8,7 +8,6 @@ interface iHomePage {
 }
 
 const Home: NextPage<iHomePage> = ({ pokemons }) => {
-  console.log('rendered the whole page ....');
   return (
     <main>
       <h3>Pokemon List</h3>

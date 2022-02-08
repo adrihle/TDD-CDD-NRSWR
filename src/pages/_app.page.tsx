@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app';
 import { SmartHead } from 'components';
+import { ReduxProvider } from 'store';
 import '../styles/reset.scss';
 
 const seoTexts = {
@@ -9,8 +10,10 @@ const seoTexts = {
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => (
   <main>
-    <SmartHead title={seoTexts.title} description={seoTexts.description} />
-    <Component {...pageProps} />
+    <ReduxProvider>
+      <SmartHead title={seoTexts.title} description={seoTexts.description} />
+      <Component {...pageProps} />
+    </ReduxProvider>
   </main>
 );
 
